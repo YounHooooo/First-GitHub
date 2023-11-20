@@ -8,7 +8,7 @@ public class DatabaseConnection {
 	private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";       
 	private static final String USER = "webadmin";
-	private static final String PWD = "dbsgh63160";
+	private static final String PWD = "qwer1234";
 	private Connection con;
 	
 	// DB 연결해주는 메서드

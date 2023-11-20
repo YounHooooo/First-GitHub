@@ -3,7 +3,9 @@ package kr.co.green.board.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Objects;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -75,12 +77,22 @@ public class FreeEnrollController extends HttpServlet {
 		board.setFileName(fileName);
 		board.setFilePath(uploadDirectory);
 
-		int result = boardService.boardEnroll(board);
 
+		int result = 0;
+		// 데이터 길이 검증
+		if (Objects.isNull(title) || Objects.isNull(content) || name.isEmpty()) {
+			result = 0;
+		} else {
+			result = boardService.boardEnroll(board);
+		}
 		// 4. 성공 유무에 따라 처리
 		if (result > 0) {
 			response.sendRedirect("/freeList.do?cpage=1");
+		} else {
+			RequestDispatcher view = request.getRequestDispatcher("/test");
+			view.forward(request, response);
 		}
+
 	}
 
 	// 파일 이름 가지고 오는 메소드

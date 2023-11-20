@@ -61,4 +61,9 @@ public class BoardServiceImpl implements BoardService {
 	public int boardDelete(int idx) {
 		return freeDAO.boardDelete(con, idx);
 	}
+
+	public int boardEnroll(String title, String content, String name) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
